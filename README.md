@@ -9,7 +9,6 @@ npm install --save-dev svelte-scrollto
 # or
 yarn add -D svelte-scrollto
 ```
-*Note: Make sure this module not in external module list*
 
 ## Usage
 
@@ -20,9 +19,9 @@ yarn add -D svelte-scrollto
 
 <a on:click={() => animateScroll.scrollToBottom()}> Scroll to bottom </a>
 <a on:click={() => animateScroll.scrollToTop()}> Scroll to top </a>
-<a on:click={() => animateScroll.scrollTo({element: 'scroll-element-selector'})}> Scroll to element </a>
-<a on:click={() => animateScroll.scrollTo({element: 'scroll-element-selector', offset: 200})}> Scroll to below element 200px </a>
-<a on:click={() => animateScroll.scrollTo({element: 'scroll-element-selector', offset: 200})}> Scroll to below element 200px </a>
+<a on:click={() => animateScroll.scrollTo({element: 'scroll-to-element-selector'})}> Scroll to element </a>
+<a on:click={() => animateScroll.scrollTo({element: 'scroll-to-element-selector', offset: 200})}> Scroll to below element 200px </a>
+<a on:click={() => animateScroll.scrollTo({element: 'scroll-to-element-selector', duration: 2000})}> Scroll to element over 2000ms </a>
 ```
 
 
@@ -32,8 +31,7 @@ Using as a action
   import { scrollto } from "svelte-scrollto";
 </script>
 <!-- Parameter is element selector or options -->
-<a use:scrollto={'scroll-element'}> Scroll to element </a>
-
+<a use:scrollto={'#scroll-element'}> Scroll to element </a>
 ```
 
 ## API
@@ -80,14 +78,15 @@ Accepts all global options and:
 
 #### `scrollToTop(options)`
 
-Shortcut of use scrollTo with `x` equal to 0.
+Shortcut of use scrollTo with `x` equal to `0`.
 
 #### `scrollToBottom(options)`
 
-Shortcut of use scrollTo with `x` equal to containerHeight
+Shortcut of use scrollTo with `x` equal to *`containerHeight`*
+
 ### Actions
 
-Svelte action that listens for click (touchstart) events and scrolls to elements with animation. 
+Svelte action that listens for `click` (`touchstart`) events and scrolls to elements with animation. 
 
 + `scrollto`
 
@@ -95,12 +94,10 @@ Svelte action that listens for click (touchstart) events and scrolls to elements
 
 + `scrolltobottom`
 
-[easing]: https://github.com/sveltejs/svelte/blob/master/src/runtime/easing/index.ts
-
 
 ### Troubleshooting
 
 If you want to use Lazy and want to scroll to elements, you need to give your lazy components (images, v.v..) fixed dimensions, so the browser known the size of the not loaded elements before scrolling.
 
 
-*Sorry English I'm Vietnamese.*
+[easing]: https://github.com/sveltejs/svelte/blob/master/src/runtime/easing/index.ts
