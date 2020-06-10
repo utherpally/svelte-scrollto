@@ -44,7 +44,7 @@ Using as a action
 | `duration`     | 		✔     | `500` 				| The duration (in milliseconds) of the scrolling animation.
 | `delay`        | 		      | `0` 					|
 | `offset`       | 		      | `0` 					| The offset that should be applied when scrolling. This option accepts a callback function
-| `easing`       | 		      | `"cubicIn"` 	| The easing to be used when animating. Combine with [svelte easing][easing]
+| `easing`       | 		      | `cubicInOut` 	| The easing function to be used when animating. Can pass any easing from [`svelte/easing`](https://svelte.dev/docs#svelte_easing) or pass custom easing function.
 | `onStart`      | 		      | `noop` 				| A callback function that should be called when scrolling has started. Receives the target element and page offset as a parameter.
 | `onDone`       | 		      | `noop` 				| A callback function that should be called when scrolling has ended. Receives the target element and page offset  as a parameter.
 | `onAborting`   | 		      | `noop` 				| A callback function that should be called when scrolling has been aborted by the user (user scrolled, clicked etc.). Receives the target element and page offset as parameters.
