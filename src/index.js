@@ -1,4 +1,4 @@
-import * as easings from "svelte/easing";
+import { cubicInOut } from "svelte/easing";
 import { noop, loop, now } from "svelte/internal";
 import _ from "./helper";
 
@@ -7,7 +7,7 @@ const defaultOptions = {
   duration: 500,
   delay: 0,
   offset: 0,
-  easing: "cubicInOut",
+  easing: cubicInOut,
   onStart: noop,
   onDone: noop,
   onAborting: noop,
@@ -32,9 +32,6 @@ const _scrollTo = options => {
     element
   } = options;
 
-  if (typeof easing === "string") {
-    easing = easings[easing];
-  }
   if (typeof offset === "function") {
     offset = offset();
   }
