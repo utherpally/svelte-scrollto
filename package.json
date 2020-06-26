@@ -1,6 +1,6 @@
 {
   "name": "svelte-scrollto",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Svelte action that listens for click events and scrolls to elements with animation. Inspired by rigor789/vue-scrollto.",
   "keywords": [
     "svelte",
