@@ -15,6 +15,15 @@ const defaultOptions = {
   scrollY: true
 };
 
+const abortEvents = [
+  'mousedown',
+  'wheel',
+  'DOMMouseScroll',
+  'mousewheel',
+  'keyup',
+  'touchmove',
+];
+
 const _scrollTo = options => {
   let {
     offset,
@@ -67,6 +76,7 @@ const _scrollTo = options => {
       started = true;
       onStart(element, {x, y});
     }
+    _.addScrollListeners(container, abortEvents, stop, { passive: true });
   }
 
   function tick(progress) {
@@ -79,6 +89,8 @@ const _scrollTo = options => {
 
   function stop() {
     scrolling = false;
+    _.removeScrollListeners(container, abortEvents, stop);
+    
   }
 
   loop(now => {
@@ -90,6 +102,7 @@ const _scrollTo = options => {
       tick(1);
       stop();
       onDone(element, {x, y});
+      return false;
     }
 
     if (!scrolling) {
