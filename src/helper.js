@@ -1,3 +1,13 @@
+let supportsPassive = false
+try {
+  let opts = Object.defineProperty({}, 'passive', {
+    get: function() {
+      supportsPassive = true
+    },
+  })
+  window.addEventListener('test', null, opts)
+} catch (e) {}
+
 export default {
   $(selector) {
     if (typeof selector === "string") {
@@ -8,6 +18,26 @@ export default {
   extend(...args) {
     return Object.assign(...args);
   },
+  addListeners(element, events, handler, opts = { passive: false }) {
+    if (!(events instanceof Array)) {
+     events = [events]
+   }
+   for (let i = 0; i < events.length; i++) {
+     element.addEventListener(
+       events[i],
+       handler,
+       supportsPassive ? opts : false
+     )
+   }
+ },
+ removeListeners(element, events, handler) {
+   if (!(events instanceof Array)) {
+     events = [events]
+   }
+   for (let i = 0; i < events.length; i++) {
+     element.removeEventListener(events[i], handler)
+   }
+ },
   cumulativeOffset(element) {
     let top = 0;
     let left = 0;
