@@ -20,7 +20,7 @@ const abortEvents = [
   'wheel',
   'DOMMouseScroll',
   'mousewheel',
-  'keyup',
+  'keydown',
   'touchmove',
 ];
 
